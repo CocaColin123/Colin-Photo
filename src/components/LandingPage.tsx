@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
+import { assetUrl } from '../utils/asset';
 
 interface LandingPageProps {
   onEnter?: () => void;
@@ -86,7 +87,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
       {/* 视频尾帧作为底图：放大 + 模糊（避免背景空） */}
       <div className="pointer-events-none absolute inset-0">
         <img
-          src="/videos/7d046f381b9021b7ec551f269401dd7c.png"
+          src={assetUrl('/videos/7d046f381b9021b7ec551f269401dd7c.png')}
           alt=""
           className="absolute inset-0 h-full w-full object-cover scale-[1.25] opacity-35"
           style={{ filter: 'blur(28px) saturate(1.05) contrast(1.05)' }}
@@ -106,7 +107,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
             preload="auto"
             className="absolute inset-0 h-full w-full object-cover"
           >
-            <source src="/videos/landing.mp4" type="video/mp4" />
+            <source src={assetUrl('/videos/landing.mp4')} type="video/mp4" />
           </video>
           {/* 轻微压暗，和整体暗色调统一 */}
           <div className="absolute inset-0 bg-black/20" />

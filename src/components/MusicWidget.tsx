@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { assetUrl } from '../utils/asset';
 
 type ClickKind = 'grass' | 'tree' | 'sea' | 'stone';
 
@@ -12,12 +13,12 @@ export interface MusicWidgetProps {
   duckDb?: number;
 }
 
-const BGM_SRC = '/audio/bgm.mp3';
+const BGM_SRC = assetUrl('/audio/bgm.mp3');
 const SFX: Record<ClickKind, string> = {
-  grass: '/audio/grass.mp3',
-  tree: '/audio/tree.mp3',
-  sea: '/audio/sea.mp3',
-  stone: '/audio/stone.mp3',
+  grass: assetUrl('/audio/grass.mp3'),
+  tree: assetUrl('/audio/tree.mp3'),
+  sea: assetUrl('/audio/sea.mp3'),
+  stone: assetUrl('/audio/stone.mp3'),
 };
 
 function dbToGain(db: number) {

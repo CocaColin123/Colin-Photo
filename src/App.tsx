@@ -7,6 +7,7 @@ import FilmStrip from './components/FilmStrip';
 import LandingPage from './components/LandingPage';
 import MusicWidget from './components/MusicWidget';
 import Magnetic from './components/Magnetic';
+import { assetUrl } from './utils/asset';
 
 const GUIDED_KEY = 'colin-photo-guided';
 
@@ -144,7 +145,7 @@ export default function App() {
         resolve();
       };
       img.onerror = () => resolve();
-      img.src = src;
+      img.src = assetUrl(src);
     });
 
     const timeout = (ms: number) => new Promise<void>((resolve) => {
@@ -327,7 +328,7 @@ export default function App() {
                     viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: 0.1 }}
                     className={containerClasses} onClick={() => enterAlbum(album.id)}>
                     <div className={imageContainerClasses}>
-                      <img src={album.coverImage} alt={album.title}
+                      <img src={assetUrl(album.coverImage)} alt={album.title}
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                         style={{ objectPosition: album.style.coverObjectPosition ?? '50% 50%' }} />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
@@ -415,13 +416,13 @@ export default function App() {
                       {item.type === 'image' ? (
                         activeAlbum?.id === 'zhuozheng-garden' ? (
                           <div className="w-full aspect-[235/100] overflow-hidden">
-                            <img src={item.url} alt={item.title}
+                            <img src={assetUrl(item.url)} alt={item.title}
                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                               loading="lazy"
                               decoding="async" />
                           </div>
                         ) : (
-                          <img src={item.url} alt={item.title}
+                          <img src={assetUrl(item.url)} alt={item.title}
                             className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                             loading="lazy"
                             decoding="async" />
@@ -525,7 +526,7 @@ export default function App() {
                   <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-full max-h-[80vh]">
                     <div className="relative inline-block max-w-full max-h-full overflow-hidden">
                       {selectedMedia.type === 'image' ? (
-                        <img src={selectedMedia.url} alt={selectedMedia.title}
+                        <img src={assetUrl(selectedMedia.url)} alt={selectedMedia.title}
                           className="max-w-full max-h-[80vh] object-contain shadow-2xl"
                           draggable={false}
                           decoding="async" />
