@@ -31,9 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        env:
-          DEPLOY_TARGET: github-pages
-        run: npm run build
+        run: npm run build:github-pages
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
