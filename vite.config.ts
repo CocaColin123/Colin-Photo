@@ -3,10 +3,11 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
+// GitHub Pages 在子路径 /<repo>/；Vercel / 本地开发用根路径 '/'
+const base = process.env.GITHUB_ACTIONS === 'true' ? '/Colin-Photo/' : '/';
+
 export default defineConfig({
-  // GitHub Pages: set to '/<repo-name>/' before deploying;
-  // keep '/' for local dev or custom domain.
-  base: '/Colin-Photo/',
+  base,
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
