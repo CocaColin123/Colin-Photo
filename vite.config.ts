@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 import {dataApiPlugin} from './vite-data-api';
 
 export default defineConfig({
-  base: '/',
+  base: '/Colin-Photo/',
   plugins: [react(), tailwindcss(), dataApiPlugin()],
   resolve: {
     alias: {
